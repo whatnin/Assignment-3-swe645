@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "likhithn22/assignment3:02"
+        DOCKER_IMAGE = "likhithn22/assignment3:latest"
         DOCKER_TAG = "${env.BUILD_ID}"
         KUBECONFIG = "${WORKSPACE}/survey.yaml"
     }
@@ -31,7 +31,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("likhithn22/assignment3:02", "-f demo/Dockerfile .")
+                    dockerImage = docker.build("likhithn22/assignment3:latest", "-f demo/Dockerfile .")
                 }
             }
         }
