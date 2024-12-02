@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey-deployment
+  labels:
+    app: surveyapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: surveyapp
+  template:
+    metadata:
+      labels:
+        app: surveyapp
+    spec:
+      imagePullSecrets:
+        - name: regcred  
+      containers:
+        - name: survey-assignment-3-container
+          image: likhithn22/assignment3:02
+          ports:
+            - containerPort: 8080  
